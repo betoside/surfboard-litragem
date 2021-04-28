@@ -4,10 +4,12 @@ vi num site um sistema/formulário para calcular litragem da prancha, tentei rep
 
 Para fazer o teste, salvar o arquivo html no seu computador e abrir o arquivo
 
+<pre>
 depois informa:
 1- Peso
 2- nivel do surf
 3- habilidade
+</pre>
 
 Verá um resultado sugestão de litragem para a prancha
 
