@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .container {
+        width: 100%;
+        padding: 25px;
+      }
+      .medidas-container {
+        float: left;
+        width: 30%;
+        padding: 10px;
+        background: rgba(248, 209, 125, 0.596);
+      }
+      .medidas {
+        float: left;
+      }
+      .medidas li {
+        list-style-type: none;
+        padding: 5px;
+        margin: 5px;
+        float: left;
+        clear: both;
+        outline: #999 1px solid;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        font-size: 13px;
+        text-align: center;
+        /* line-height: 48px; */
+        white-space: normal;
+        text-transform: uppercase;
+      }
+      .box-calculate-board {
+        /* margin: 50px 0; */
+        text-transform: uppercase;
+      }
+      .box-calculate-board {
+        float: right;
+        width: 70%;
+        padding: 10px;
+        background: rgba(169, 240, 104, 0.884);
+      }
+
+      .box-field label {
+        font-size: 12px;
+        /* text-align: right; */
+      }
+
+      *, 
+      *::before, *::after {
+          box-sizing: border-box;
+          padding: 0;
+          margin: 0;
+      }
+      body, input, textarea, button, select {
+          font-size: 15px;
+          font-family: Futura;
+          color: black;
+          line-height: 1.5;
+      }
+
+
+      .box-calculate-board .box-title {
+          border-bottom: 2px solid #000000;
+          margin-bottom: 20px;
+      }
+
+      .box-calculate-board .box-title .title {
+          letter-spacing: 1px;
+          font-size: 16px;
+      }
+      .title {
+          font-size: 26px;
+          font-family: Futura;
+          font-weight: 600;
+          letter-spacing: 0px;
+          text-transform: uppercase;
+      }
+
+
+
+
+      .box-calculate-board .box-content .box-result {
+          flex: 1 1 35%;
+      }
+      .box-calculate-board .box-content .box-result .title {
+          display: block;
+          font-size: 16px;
+          letter-spacing: 1px;
+      }
+      .box-calculate-board .box-content .box-result .result-value {
+          line-height: 1;
+          font-size: 35px;
+          padding: 0 20px;
+      }
+      .box-calculate-board .box-content .box-result .result-value > span {
+          font-size: 70px;
+          font-weight: 800;
+      }
+      .box-calculate-board .box-content .box-result small {
+          display: block;
+          font-size: 10px;
+          letter-spacing: 1px;
+          text-transform: none;
+      }
+
+      .box-calculate-board .box-content {
+          margin-top: 30px;
+          display: flex;
+      }
+
+      .box-calculate-board .box-content .box-fields {
+          flex: 1 1 65%;
+      }
+      .box-calculate-board .box-content .box-fields .box-field:first-child {
+          margin-top: 0;
+      }
+      .box-calculate-board .box-content .box-fields .box-field {
+          margin: 10px 0;
+          display: flex;
+          align-items: center;
+      }
+      .box-calculate-board .box-content .box-fields .box-field label {
+          flex: 1 1 40%;
+          font-size: 12px;
+          text-align: right;
+      }
+      label {
+          display: block;
+          margin-bottom: 5px;
+      }
+      .box-calculate-board .box-content .box-fields .box-field .field-value {
+          height: 30px;
+          flex: 1 1 60%;
+          margin: 0 10px;
+          padding: 0 10px;
+          max-width: 255px;
+          min-width: 200px;
+          padding-right: 30px;
+      }
+
+      select {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          background-position: right center;
+          background-image: url(//cdn.shopify.com/s/files/1/0262/1908/5882/t/9/assets/ico-select.svg?v=1555638…);
+          background-repeat: no-repeat;
+          background-position: right 10px center;
+          line-height: 1.2;
+          padding-right: 28px;
+          text-indent: 0.01px;
+          text-overflow: '';
+          cursor: pointer;
+          padding-top: 8px;
+          padding-left: 15px;
+          padding-bottom: 8px;
+      }
+      input, textarea, select {
+          border: 1px solid #cfcccc;
+          background-color: white;
+          color: black;
+          max-width: 100%;
+          line-height: 1.5;
+          border-radius: 2px;
+      }
+
+    </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- 
+    <h3>
+        <a target="_blank" href="https://magicsurf.com.br/collections/powerlight/products/sk11-powerlight-madeira">
+            SK11 POWERLIGHT MADEIRA (M4GIC)
+        </a>
+    </h3>
+    <p>R$ 2.862,60</p>
+     -->
+
+    <div class="medidas-container">
+      <h4>
+        Medidas 
+        <br>
+        (Tamanho x Largura x Espessura x Volume)
+      </h4>
+      <ul class="medidas">
+        <li>5'6"  x 18.875 x 2.3125 x 26.8L</li>
+        <li>5'7"  x 19.5 x 2.5 x 30.2L</li>
+        <li>5'8"  x 19.4375 x 2.375 x 29.5L</li>
+        <li>5'8"  x 19.75 x 2.5625 x 32L</li>
+        <li>5'9"  x 19.75 x 2.4375 x 30L</li>
+        <li>5'9"  x 19.75 x 2.625 x 33L</li>
+        <li>5'10"  x 19.25 x 2.3125 x 28.5L</li>
+        <li>5'10"  x 19.25 x 2.4375 x 30L</li>
+        <li>5'10"  x 19.75 x 2.5625 x 32L</li>
+        <li>5'11"  x 19.75 x 2.5625 x 33L</li>
+        <li>6'0"  x 20 x 2.5 x 32.5L</li>
+        <li>6'1"  x 19.75 x 2.5625 x 34L</li>
+      </ul>
+    </div>
+
+
+    <div class="box-calculate-board">
+        <div class="box-title"> 
+            <h2 class="title">Calcule o volume da prancha</h2>
+        </div>
+        <div class="box-content">
+            <div class="box-fields">
+                <div class="box-field">
+                    <label>Peso (KG):</label>
+                    <select name="" id="fieldWeight" class="field-value">
+                        <option>selecione</option>
+                        <option value="40">40</option>
+                        <option value="45">45</option>
+                        <option value="50">50</option>
+                        <option value="55">55</option>
+                        <option value="60">60</option>
+                        <option value="65">65</option>
+                        <option value="70">70</option>
+                        <option value="75">75</option>
+                        <option value="80">80</option>
+                        <option value="85">85</option>
+                        <option value="90">90</option>
+                        <option value="95">95</option>
+                        <option value="100">100</option>
+                        <option value="105">105</option>
+                        <option value="110">110</option>
+                        <option value="115">115</option>
+                        <option value="120">120</option>
+                    </select>
+                </div>
+                <div class="box-field">
+                    <label>Nível do surf:</label>
+                    <select name="" id="fieldLevel" class="field-value">
+                        <option>selecione</option>
+                        <option value="pro">PRO</option>
+                        <option value="intermediario">Intermediário</option>
+                        <option value="iniciante">Iniciante</option>
+                        <option value="nunca_surfou">Nunca subiu em uma prancha</option>
+                    </select>
+                </div>
+                <div class="box-field" style="visibility: visible;">
+                    <label>Habilidade no surf:</label>
+                    <select name="" id="fieldSkill" class="field-value"><option>selecione</option><option value="intermediario_level_1">Domina as manobras básicas e inicia as manobras avançadas</option><option value="intermediario_level_1">Domina Manobras Avançadas: e tenta as combinações de aéreos com giros.</option><option value="intermediario_level_2">Dropa e corre (Dropo e corro a parede)</option><option value="intermediario_level_2">Sobe e Desce a onda (Faço lipe e base com facilidade)</option><option value="intermediario_level_2">Inicia as manobras básicas, mas não domina</option></select>
+                </div>
+            </div>
+            <div class="box-result">
+                <strong class="title">Resultado:</strong>
+                <span class="result-value"><span>??</span> L</span>
+                <small>*Este valor é somente uma referência.</small>
+            </div>
+        </div>
+    </div>
+    
+  </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        var multiples = {
+            "pro_level_1": {
+                "40" : 0.44,
+                "45" : 0.39,
+                "50" : 0.35,
+                "55" : 0.35,
+                "60" : 0.35,
+                "65" : 0.35,
+                "70" : 0.35,
+                "75" : 0.35,
+                "80" : 0.35,
+                "85" : 0.35,
+                "90" : 0.35,
+                "95" : 0.35,
+                "100" : 0.35,
+                "105" : 0.35,
+                "110" : 0.35,
+                "115" : 0.35,
+                "120" : 0.35
+            },
+            "intermediario_level_1": {
+                "40" : 0.44,
+                "45" : 0.4,
+                "50" : 0.4,
+                "55" : 0.4,
+                "60" : 0.4,
+                "65" : 0.4,
+                "70" : 0.4,
+                "75" : 0.4,
+                "80" : 0.4,
+                "85" : 0.4,
+                "90" : 0.4,
+                "95" : 0.4,
+                "100" : 0.4,
+                "105" : 0.4,
+                "110" : 0.4,
+                "115" : 0.4,
+                "120" : 0.4
+            }, 
+            "intermediario_level_2": {
+                "40" : 0.5,
+                "45" : 0.5,
+                "50" : 0.5,
+                "55" : 0.5,
+                "60" : 0.5,
+                "65" : 0.5,
+                "70" : 0.5,
+                "75" : 0.5,
+                "80" : 0.5,
+                "85" : 0.5,
+                "90" : 0.5,
+                "95" : 0.5,
+                "100" : 0.5,
+                "105" : 0.5,
+                "110" : 0.5,
+                "115" : 0.5,
+                "120" : 0.5
+            },  
+            "iniciante_level_1": {
+                "40" : 0.65,
+                "45" : 0.65,
+                "50" : 0.65,
+                "55" : 0.65,
+                "60" : 0.65,
+                "65" : 0.65,
+                "70" : 0.65,
+                "75" : 0.65,
+                "80" : 0.65,
+                "85" : 0.65,
+                "90" : 0.65,
+                "95" : 0.65,
+                "100" : 0.65,
+                "105" : 0.65,
+                "110" : 0.65,
+                "115" : 0.65,
+                "120" : 0.65
+            }, 
+            "iniciante_level_2": {
+                "40" : 0.8,
+                "45" : 0.8,
+                "50" : 0.8,
+                "55" : 0.8,
+                "60" : 0.8,
+                "65" : 0.8,
+                "70" : 0.8,
+                "75" : 0.8,
+                "80" : 0.8,
+                "85" : 0.8,
+                "90" : 0.8,
+                "95" : 0.8,
+                "100" : 0.8,
+                "105" : 0.8,
+                "110" : 0.8,
+                "115" : 0.8,
+                "120" : 0.8
+            },
+            "nunca_surfou": {
+                "40" : 1,
+                "45" : 1,
+                "50" : 1,
+                "55" : 1,
+                "60" : 1,
+                "65" : 1,
+                "70" : 1,
+                "75" : 1,
+                "80" : 1,
+                "85" : 1,
+                "90" : 1,
+                "95" : 1,
+                "100" : 1,
+                "105" : 1,
+                "110" : 1,
+                "115" : 1,
+                "120" : 1
+            }                                            
+        }    
+        var skill = {
+            "pro": [
+                {
+                    "description": "Domina as manobras avançadas e a combinações de aéreos com giro.",
+                    "level": "pro_level_1"
+                }
+            ],
+            "intermediario": [
+                {
+                    "description": "Domina as manobras básicas e inicia as manobras avançadas",
+                    "level": "intermediario_level_1"
+                },
+                {
+                    "description": "Domina Manobras Avançadas: e tenta as combinações de aéreos com giros.",
+                    "level": "intermediario_level_1"
+                },
+                {
+                    "description": "Dropa e corre (Dropo e corro a parede)",
+                    "level": "intermediario_level_2"
+                },            
+                {
+                    "description": "Sobe e Desce a onda (Faço lipe e base com facilidade)",
+                    "level": "intermediario_level_2"
+                },            
+                {
+                    "description": "Inicia as manobras básicas, mas não domina",
+                    "level": "intermediario_level_2"
+                },            
+            ], 
+            "iniciante": [
+                {
+                    "description": "Dropa com ajuda ( Dropo reto)",
+                    "level": "iniciante_level_1"
+                },
+                {
+                    "description": "Drop sozinho mas vai reto",
+                    "level": "iniciante_level_1"
+                },
+                {
+                    "description": "Ainda não fico em pé",
+                    "level": "iniciante_level_2"
+                },
+                {
+                    "description": "Fico em pé na espuma",
+                    "level": "iniciante_level_2"
+                }
+            ],
+            "nunca_surfou": [
+                {
+                    "level": "nunca_surfou"
+                }
+            ]                            
+        }   
+    
+        $(function(){
+    
+            $("#fieldWeight").change(function(){
+                var weight = getWeight();
+                var level = getLevel();
+    
+                if (level == "nunca_surfou"){
+                    fetchVolume(weight, "nunca_surfou");
+                } else {
+                    var skill = getSkill();
+                    fetchVolume(weight, skill);                
+                }            
+            });
+    
+            $("#fieldLevel").change(function(){
+                var weight = getWeight();
+                var level = getLevel();
+                
+                if (level == "nunca_surfou"){
+                    fetchSkill("nunca_surfou");
+                    fetchVolume(weight, "nunca_surfou");
+                } else {
+                    var skill = getSkill();
+    
+                    fetchSkill(level);
+                    fetchVolume(weight, skill);                
+                }
+            });
+    
+            $("#fieldSkill").change(function(){
+                var weight = getWeight();
+                var level = getLevel();
+    
+                if (level == "nunca_surfou"){
+                    fetchVolume(weight, "nunca_surfou");
+                } else {
+                    var skill = getSkill();
+                    fetchVolume(weight, skill);                
+                }             
+            });      
+        });
+    
+        function getWeight(){
+            return $("#fieldWeight option:selected").attr("value");
+        }
+    
+        function getLevel(){
+            return $("#fieldLevel option:selected").attr("value");
+        }  
+        
+        function getSkill(){
+            return $("#fieldSkill option:selected").attr("value");
+        }         
+    
+        function fetchSkill(level){
+    
+            if(level == "nunca_surfou"){
+                $("#fieldSkill").empty().parent().css("visibility", "hidden")
+            } else {
+                var data = undefined;
+                switch (level){
+                    case "pro":
+                        data = skill.pro;
+                        break;
+                    case "intermediario":
+                        data = skill.intermediario;
+                        break;                    
+                    case "iniciante":
+                        data = skill.iniciante;
+                        break;     
+                    case "nunca_surfou":
+                        data = skill.nunca_surfou;
+                        break;                                
+                }
+    
+                var skills = "<option>selecione</option>";
+                $.map(data, function(e, i){
+                    skills += "<option value='" + e.level + "'>" + e.description + "</option>";
+                });
+                $("#fieldSkill").html(skills).parent().css("visibility", "visible")
+            }
+        }        
+    
+        function fetchVolume(weight, skill){
+            
+            var data = undefined;
+            switch (skill){
+                case "pro_level_1":
+                    data = multiples.pro_level_1;
+                    break;
+                case "intermediario_level_1":
+                    data = multiples.intermediario_level_1;
+                    break;    
+                case "intermediario_level_2":
+                    data = multiples.intermediario_level_2;
+                    break;                                      
+                case "iniciante_level_1":
+                    data = multiples.iniciante_level_1;
+                    break;    
+                case "iniciante_level_2":
+                    data = multiples.iniciante_level_2;
+                    break;   
+                case "nunca_surfou":
+                    data = multiples.nunca_surfou;
+                    break;                                                  
+            }
+    
+            $.map(data, function(e, i){
+                if (weight == i){
+                    var result = parseInt(weight) * parseFloat(e);
+                    $(".result-value > span").html(result);
+                }
+            });            
+        }    
+    </script>
+</body>
+</html>
+
+
